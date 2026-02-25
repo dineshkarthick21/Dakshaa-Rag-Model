@@ -1,15 +1,18 @@
-# Dakshaa RAG Model 🧠
+# RAG Dakshaa - Intelligent Q&A System 🧠
 
-A full-stack Retrieval Augmented Generation (RAG) application built with FastAPI, React, LangChain, FAISS, and Google Gemini.
+A full-stack Retrieval Augmented Generation (RAG) application built for Dakshaa Techno-Cultural Fest. Powered by FastAPI, React, LangChain, FAISS, and Google Gemini to provide instant, accurate answers about the event.
 
 ## 🌟 Features
 
-- **Intelligent Document Search**: Uses FAISS vector database for efficient semantic search
-- **AI-Powered Responses**: Leverages Google Gemini 2.5 Flash for accurate answers
-- **Modern UI**: Beautiful React frontend with dark/light theme toggle
-- **Real-time Chat**: Interactive chat interface with typing indicators
+- **Intelligent Document Search**: Uses FAISS vector database for efficient semantic search across Dakshaa event information
+- **AI-Powered Responses**: Leverages Google Gemini 2.5 Flash for accurate, context-aware answers
+- **Modern Full-Screen UI**: Beautiful React frontend with immersive chat experience
+- **Dark/Light Theme**: Theme toggle with smooth transitions and proper contrast
+- **Real-time Chat**: Interactive chat interface with typing indicators and timestamps
 - **Context-Aware**: Retrieves relevant documents before generating responses
+- **Clean Output**: Automatically removes markdown formatting for plain text responses
 - **Fast & Scalable**: FastAPI backend with async support
+- **Custom Branding**: Dakshaa logo and branded interface
 
 ## 🏗️ Tech Stack
 
@@ -17,7 +20,7 @@ A full-stack Retrieval Augmented Generation (RAG) application built with FastAPI
 - **FastAPI**: High-performance Python web framework
 - **LangChain**: Framework for building LLM applications
 - **FAISS**: Facebook AI Similarity Search for vector storage
-- **Google Gemini**: Powerful LLM for text generation
+- **Google Gemini 2.5 Flash**: Powerful LLM for text generation
 - **Python 3.13**: Latest Python features
 
 ### Frontend
@@ -31,13 +34,15 @@ A full-stack Retrieval Augmented Generation (RAG) application built with FastAPI
 ```
 Rag_Fullstack/
 ├── backend/
-│   ├── data.txt              # Your knowledge base documents
+│   ├── data.txt              # Dakshaa event knowledge base
 │   ├── ingest.py             # Script to create vector embeddings
 │   ├── main.py               # FastAPI application
 │   ├── requirements.txt      # Python dependencies
 │   └── vector_db/            # FAISS vector database (generated)
 ├── frontend/
 │   ├── src/
+│   │   ├── assets/
+│   │   │   └── image.png     # Dakshaa logo
 │   │   ├── App.jsx           # Main React component
 │   │   ├── App.css           # Component styles
 │   │   ├── index.css         # Global styles & theme
@@ -111,10 +116,12 @@ Rag_Fullstack/
 
 ## 💡 Usage
 
-1. Type your question in the chat input
-2. Press Enter or click the send button
-3. The AI will retrieve relevant context from your documents and generate a response
-4. Toggle between light and dark themes using the theme button in the header
+1. Open the application in your browser at `http://localhost:5173`
+2. Click the suggestion button "Tell me all about Dakshaa" or type your own question
+3. Press Enter or click the send button
+4. The AI will retrieve relevant context from the Dakshaa knowledge base and generate a response
+5. Toggle between light and dark themes using the ☀️/🌙 button in the header
+6. All responses are automatically cleaned of markdown formatting for better readability
 
 ## 📝 API Endpoints
 
@@ -144,24 +151,36 @@ Ask a question to the RAG system
 ## 🎨 Theme Support
 
 The application supports both dark and light themes:
-- **Dark Theme**: Black background with light text (default)
-- **Light Theme**: White background with dark text
+- **Dark Theme**: Black background with gradient navbar (default)
+- **Light Theme**: White background with light gray navbar
 - Theme preference is saved in localStorage
+- Smooth transitions between themes
+- Clear visual separation between navbar and content area
 
 ## 🔧 Configuration
 
 ### Backend Configuration
 Edit `backend/main.py` to customize:
 - LLM model (currently using `gemini-2.5-flash`)
-- Vector search parameters (k value for retrieval)
-- CORS settings
-- Temperature and other LLM parameters
+- Vector search parameters (k=3 for retrieval)
+- CORS settings (configured for localhost:5173)
+- Temperature (set to 0 for consistent responses)
+- Markdown cleaning function for output formatting
+
+### Knowledge Base
+Edit `backend/data.txt` to update Dakshaa event information:
+- Event details and schedule
+- Technical and cultural activities
+- Workshop information
+- Registration process
+- Contact information
 
 ### Frontend Configuration
 Edit `frontend/src/App.jsx` to customize:
-- API base URL
-- Suggestion prompts
-- UI components
+- API base URL (default: http://localhost:8000)
+- Suggestion prompts (currently: "Tell me all about Dakshaa")
+- UI components and branding
+- Logo (stored in `src/assets/image.png`)
 
 ## 📦 Dependencies
 
@@ -187,14 +206,15 @@ Edit `frontend/src/App.jsx` to customize:
 ## 🛠️ Development
 
 ### Adding New Documents
-1. Add text to `backend/data.txt`
+1. Edit `backend/data.txt` with updated Dakshaa information
 2. Run `python ingest.py` to update the vector database
 3. Restart the backend server
 
 ### Customizing the UI
 - Edit `frontend/src/index.css` for theme colors and styles
 - Modify `frontend/src/App.jsx` for component structure
-- Update `frontend/src/App.css` for component-specific styles
+- Replace `frontend/src/assets/image.png` with your custom logo
+- Update branding text in the header and footer
 
 ## 🐛 Troubleshooting
 
@@ -228,7 +248,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - FAISS for efficient vector search
 - FastAPI for the amazing backend framework
 - React and Vite for the frontend tools
+- K.S.Rangasamy College of Technology for Dakshaa fest
 
 ---
 
-**Built with ❤️ using LangChain · FAISS · FastAPI · React · Vite**
+**@RAG Dakshaa - All rights reserved**

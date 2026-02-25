@@ -4,10 +4,7 @@ import './index.css'
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 const SUGGESTIONS = [
-  'What is Spring Boot?',
-  'What is MongoDB?',
-  'What is LangChain?',
-  'How does RAG work?',
+  'Tell me all about Dakshaa',
 ]
 
 function formatTime(date) {
@@ -113,7 +110,7 @@ function App() {
       <header className="header">
         <div className="header-brand">
           <div className="header-logo">🧠</div>
-          <span className="header-title">RAG Assistant</span>
+          <span className="header-title">RAG Dakshaa..</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <button 
@@ -124,31 +121,12 @@ function App() {
           >
             {theme === 'dark' ? '☀️' : '🌙'}
           </button>
-          <span className="header-badge">LangChain · FAISS · Gemini</span>
+          <span className="header-badge">KSRCT</span>
         </div>
       </header>
 
       {/* ── Main ── */}
       <main className="main-container">
-        {/* Hero */}
-        <section className="hero">
-          <div className="hero-tag">
-            <span className="hero-tag-dot" />
-            Retrieval Augmented Generation
-          </div>
-          <h1>Ask Your Documents</h1>
-          <p className="hero-sub">
-            Powered by LangChain, FAISS vector search, and OpenAI — get precise answers
-            grounded in your knowledge base.
-          </p>
-          <div className="hero-chips">
-            <span className="chip"><span className="chip-icon">🔗</span> LangChain</span>
-            <span className="chip"><span className="chip-icon">🗄️</span> FAISS Vector DB</span>
-            <span className="chip"><span className="chip-icon">✨</span> GPT-4o-mini</span>
-            <span className="chip"><span className="chip-icon">⚡</span> FastAPI</span>
-          </div>
-        </section>
-
         {/* Chat Window */}
         <div className="chat-window">
           {/* Window Chrome */}
@@ -215,7 +193,7 @@ function App() {
                 ref={textareaRef}
                 id="chat-input"
                 className="chat-input"
-                placeholder="Ask a question about your documents…"
+                placeholder="Ask a question about dakshaa…"
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -240,30 +218,11 @@ function App() {
             </p>
           </div>
         </div>
-
-        {/* Info Cards */}
-        <div className="info-panel">
-          <div className="info-card">
-            <div className="info-card-icon">🗄️</div>
-            <div className="info-card-label">Vector Store</div>
-            <div className="info-card-value">FAISS (local)</div>
-          </div>
-          <div className="info-card">
-            <div className="info-card-icon">🤖</div>
-            <div className="info-card-label">LLM Model</div>
-            <div className="info-card-value">GPT-4o-mini</div>
-          </div>
-          <div className="info-card">
-            <div className="info-card-icon">🔗</div>
-            <div className="info-card-label">Chain Type</div>
-            <div className="info-card-value">RetrievalQA</div>
-          </div>
-        </div>
       </main>
 
       {/* Footer */}
       <footer className="footer">
-        Built with ❤️ using LangChain · FAISS · FastAPI · Vite React
+        @RAG Dakshaa ..All rights reserved
       </footer>
 
       {/* Error Toast */}

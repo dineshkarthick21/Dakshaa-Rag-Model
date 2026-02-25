@@ -1,4 +1,5 @@
 import os
+import re
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
@@ -55,6 +56,18 @@ Question: {question}
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
+# Helper function to remove markdown symbols
+def clean_markdown(text):
+    # Remove bold (**text** or __text__)
+    text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
+    text = re.sub(r'__(.+?)__', r'\1', text)
+    # Remove italic (*text* or _text_)
+    text = re.sub(r'\*(.+?)\*', r'\1', text)
+    text = re.sub(r'_(.+?)_', r'\1', text)
+    # Remove remaining standalone asterisks
+    text = re.sub(r'\*', '', text)
+    return text
+
 # Create the RAG chain using LCEL
 qa_chain = (
     {"context": retriever | format_docs, "question": RunnablePassthrough()}
@@ -72,4 +85,6 @@ def ask_question(request: QueryRequest):
     if not request.question.strip():
         raise HTTPException(status_code=400, detail="Question cannot be empty.")
     answer = qa_chain.invoke(request.question)
-    return {"answer": answer}
+    # Clean markdown symbols from the answer
+    clean_answer = clean_markdown(answer)
+    return {"answer": clean_answer}
